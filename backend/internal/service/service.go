@@ -32,6 +32,7 @@ type Services struct {
 	Reactions *ReactionService
 	Journal   *JournalService
 	State     *StateService
+	Export    *ExportService
 }
 
 func New(r domain.Repositories, now func() time.Time) *Services {
@@ -48,6 +49,7 @@ func New(r domain.Repositories, now func() time.Time) *Services {
 		Journal:   &JournalService{repo: r.Journal},
 	}
 	s.State = &StateService{r: r}
+	s.Export = &ExportService{r: r, now: now}
 	return s
 }
 
@@ -253,7 +255,9 @@ type MaterialService struct {
 	now  func() time.Time
 }
 
-func (s *MaterialService) List(ctx context.Context) ([]domain.Material, error) { return s.repo.List(ctx) }
+func (s *MaterialService) List(ctx context.Context) ([]domain.Material, error) {
+	return s.repo.List(ctx)
+}
 
 func (s *MaterialService) Create(ctx context.Context, in domain.Material) (*domain.Material, error) {
 	in.Title = clean(in.Title, maxTitle)
@@ -345,7 +349,9 @@ func (s *ReactionService) Set(ctx context.Context, clientID, entryID string, lik
 
 type JournalService struct{ repo domain.JournalRepository }
 
-func (s *JournalService) List(ctx context.Context) ([]domain.JournalPost, error) { return s.repo.List(ctx) }
+func (s *JournalService) List(ctx context.Context) ([]domain.JournalPost, error) {
+	return s.repo.List(ctx)
+}
 
 // ---- Aggregate state ----
 
@@ -377,17 +383,29 @@ func (s *StateService) Get(ctx context.Context, clientID string) (*domain.State,
 	}
 	// The client validator requires arrays, never null.
 	for i := range st.Sessions {
-		nz(&st.Sessions[i].Tags); nz(&st.Sessions[i].Notes); nz(&st.Sessions[i].Options)
+		nz(&st.Sessions[i].Tags)
+		nz(&st.Sessions[i].Notes)
+		nz(&st.Sessions[i].Options)
 	}
 	for i := range st.Entries {
 		nz(&st.Entries[i].Tags)
 	}
 	nz(&st.Liked)
-	if st.Replies == nil { st.Replies = []domain.Reply{} }
-	if st.Materials == nil { st.Materials = []domain.Material{} }
-	if st.Entries == nil { st.Entries = []domain.Entry{} }
-	if st.Sessions == nil { st.Sessions = []domain.Session{} }
-	if st.Votes == nil { st.Votes = map[string]int{} }
+	if st.Replies == nil {
+		st.Replies = []domain.Reply{}
+	}
+	if st.Materials == nil {
+		st.Materials = []domain.Material{}
+	}
+	if st.Entries == nil {
+		st.Entries = []domain.Entry{}
+	}
+	if st.Sessions == nil {
+		st.Sessions = []domain.Session{}
+	}
+	if st.Votes == nil {
+		st.Votes = map[string]int{}
+	}
 	return st, nil
 }
 

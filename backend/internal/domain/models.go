@@ -6,20 +6,20 @@ import "time"
 
 // Session is an assembly, walk, lab, or forum that neighbors can respond to.
 type Session struct {
-	ID           string   `json:"id"`
-	Code         string   `json:"code"`
-	Title        string   `json:"title"`
-	Date         string   `json:"date"`    // YYYY-MM-DD (America/New_York)
-	EndDate      string   `json:"endDate"` // YYYY-MM-DD
-	Place        string   `json:"place"`
-	Neighborhood string   `json:"neighborhood"`
-	Desc         string   `json:"desc"`
-	Art          string   `json:"art"`
-	Tags         []string `json:"tags"`
-	Notes        []string `json:"notes"`
-	Poll         string   `json:"poll"`
-	Options      []string `json:"options"`
-	Sample       bool     `json:"sample"`
+	ID           string    `json:"id"`
+	Code         string    `json:"code"`
+	Title        string    `json:"title"`
+	Date         string    `json:"date"`    // YYYY-MM-DD (America/New_York)
+	EndDate      string    `json:"endDate"` // YYYY-MM-DD
+	Place        string    `json:"place"`
+	Neighborhood string    `json:"neighborhood"`
+	Desc         string    `json:"desc"`
+	Art          string    `json:"art"`
+	Tags         []string  `json:"tags"`
+	Notes        []string  `json:"notes"`
+	Poll         string    `json:"poll"`
+	Options      []string  `json:"options"`
+	Sample       bool      `json:"sample"`
 	CreatedAt    time.Time `json:"-"`
 }
 
@@ -107,11 +107,11 @@ type JournalPost struct {
 // State is the aggregate document the client boots from. Its shape mirrors the
 // prototype's localStorage document (version 1) so the UI needs no changes.
 type State struct {
-	Version   int                 `json:"version"`
-	Sessions  []Session           `json:"sessions"`
-	Entries   []Entry             `json:"entries"`
-	Replies   []Reply             `json:"replies"`
-	Materials []Material          `json:"materials"`
-	Votes     map[string]int      `json:"votes"` // sessionId -> option index, for the requesting client
-	Liked     []string            `json:"liked"` // entry ids, for the requesting client
+	Version   int            `json:"version"`
+	Sessions  []Session      `json:"sessions"`
+	Entries   []Entry        `json:"entries"`
+	Replies   []Reply        `json:"replies"`
+	Materials []Material     `json:"materials"`
+	Votes     map[string]int `json:"votes"` // sessionId -> option index, for the requesting client
+	Liked     []string       `json:"liked"` // entry ids, for the requesting client
 }

@@ -3,11 +3,14 @@
 package http
 
 import (
+	"encoding/csv"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"log/slog"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/go-chi/chi/v5"
 
@@ -31,6 +34,8 @@ func NewRouter(svc *service.Services, log *slog.Logger, origins []string) http.H
 	r.Route("/api/v1", func(r chi.Router) {
 		r.Get("/state", c.getState)
 		r.Get("/journal", c.listJournal)
+		r.Get("/export", c.exportJSON)
+		r.Get("/export.csv", c.exportCSV)
 		r.Get("/sessions", c.listSessions)
 		r.Post("/sessions", c.createSession)
 		r.Get("/sessions/{code}", c.getSession)
@@ -237,4 +242,42 @@ func (c *Controller) createMaterial(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	writeJSON(w, http.StatusCreated, v)
+}
+
+// ---- research export ----
+
+func (c *Controller) exportJSON(w http.ResponseWriter, r *http.Request) {
+	v, err := c.svc.Export.Snapshot(r.Context())
+	if err != nil {
+		c.fail(w, r, err)
+		return
+	}
+	w.Header().Set("Content-Disposition", "attachment; filename=\"field-notes-export.json\"")
+	writeJSON(w, 200, v)
+}
+
+// exportCSV flattens entries with their session for spreadsheet work.
+func (c *Controller) exportCSV(w http.ResponseWriter, r *http.Request) {
+	v, err := c.svc.Export.Snapshot(r.Context())
+	if err != nil {
+		c.fail(w, r, err)
+		return
+	}
+	sessions := map[string]service.SessionExport{}
+	for _, s := range v.Sessions {
+		sessions[s.ID] = s
+	}
+	replies := map[string]int{}
+	for _, rp := range v.Replies {
+		replies[rp.EntryID]++
+	}
+	w.Header().Set("Content-Type", "text/csv; charset=utf-8")
+	w.Header().Set("Content-Disposition", "attachment; filename=\"field-notes-entries.csv\"")
+	cw := csv.NewWriter(w)
+	_ = cw.Write([]string{"entry_id", "created", "session_code", "session_title", "session_date", "neighborhood", "type", "name", "hood", "location", "tags", "text", "reply_count", "sample_session"})
+	for _, e := range v.Entries {
+		s := sessions[e.SessionID]
+		_ = cw.Write([]string{e.ID, e.Created, s.Code, s.Title, s.Date, s.Neighborhood, string(e.Type), e.Name, e.Hood, e.Location, strings.Join(e.Tags, "|"), e.Text, fmt.Sprint(replies[e.ID]), fmt.Sprint(s.Sample)})
+	}
+	cw.Flush()
 }

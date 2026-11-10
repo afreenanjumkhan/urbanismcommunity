@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "build": "tsc --noEmit && node scripts/parity.mjs && vite build",
+    "preview": "vite preview",
+    "test:parity": "node scripts/parity.mjs"
   },
   "devDependencies": {
     "typescript": "^5.9.0",
