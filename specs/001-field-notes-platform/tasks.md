@@ -13,6 +13,6 @@
 - [x] T11 Docs: constitution, spec, plan, CLAUDE.md, handoff.md, README
 - [ ] T12 Service unit tests (validation paths)
 - [ ] T13 Playwright parity screenshot test vs prototype
-- [ ] T14 Railway + Vercel projects created, env vars set, domain aiabrooklynurbanism.com attached, first deploy
+- [x] T14 Railway + Vercel projects created, env vars set, domain aiabrooklynurbanism.com attached, first deploy (2026-11-11)
 - [ ] T15 Phase 2: media storage endpoint
 - [ ] T16 Phase 2: export endpoint for research

@@ -24,3 +24,17 @@ what changed, what was verified, what is next, anything surprising.
 
 **Gotchas**
 - Bundle validator rejects `null` arrays; API always returns `[]`.
+
+## 2026-11-11 · Session 1b · First production deploy
+
+**Done**
+- Railway project `vigilant-amazement`, service `urbanism` (Dockerfile), Postgres plugin added, `DATABASE_URL=${{Postgres.DATABASE_URL}}`, `ALLOWED_ORIGINS` = apex + www. Public API: https://urbanism-production.up.railway.app
+- Vercel project `urbanism` (root `frontend`, Vite). `VITE_API_URL` = Railway URL (prod + preview). Domain aiabrooklynurbanism.com (Cloudflare DNS → Vercel); apex 308 → www.
+- `.vercel/` link lives at repo root (not `frontend/`); run `vercel --prod` from root.
+
+**Verified**
+- `/healthz` 200, `/api/v1/state` returns seeded sessions with CORS for www origin; www bundle has Railway URL baked in; legacy CSS/JS served.
+
+**Gotchas**
+- Changing a Railway variable auto-redeploys; `railway redeploy` right after says "cannot be redeployed".
+- `vercel --prod` from `frontend/` fails ("Root Directory frontend does not exist"); run from repo root.

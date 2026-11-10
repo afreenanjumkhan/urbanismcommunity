@@ -51,7 +51,8 @@ Header `X-Client-Id` (8–64 `[A-Za-z0-9_-]`) scopes votes/likes.
 ## Deploy
 - Railway: service from `backend/` (Dockerfile). Env: `DATABASE_URL`, `APP_ENV=production`,
   `ALLOWED_ORIGINS=https://aiabrooklynurbanism.com,https://www.aiabrooklynurbanism.com`.
-- Vercel: root dir `frontend/`, framework Vite, domain aiabrooklynurbanism.com. Env: `VITE_API_URL=https://<railway-domain>`.
+- Vercel: project `urbanism`, root dir `frontend/`, Vite, domain aiabrooklynurbanism.com (www canonical). Env: `VITE_API_URL=https://urbanism-production.up.railway.app`. Deploy with `vercel --prod` from repo root.
+- Railway: project `vigilant-amazement`, service `urbanism`, public https://urbanism-production.up.railway.app. Variable change = auto redeploy.
 
 ## Session history
 See `handoff.md`. Session 1 (2026-11-11): project bootstrapped end-to-end.

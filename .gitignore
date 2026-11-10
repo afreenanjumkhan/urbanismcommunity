@@ -16,3 +16,5 @@ frontend/dist/
 .railway/
 # Claude local
 .claude/settings.local.json
+.vercel
+.env*
