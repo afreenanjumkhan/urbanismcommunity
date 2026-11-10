@@ -1,0 +1,368 @@
+{
+  "sessions": [
+    {
+      "id": "s4",
+      "code": "STREET26",
+      "title": "Streets for everyone",
+      "date": "2026-11-14",
+      "endDate": "2026-11-14",
+      "place": "Grand Army Plaza · Brooklyn",
+      "neighborhood": "Prospect Heights",
+      "desc": "A neighborhood walk and a shared question: what would it take to make our streets feel like they belong to everyone? Bring a story, a sketch, or simply your curiosity.",
+      "art": "blocks",
+      "tags": [
+        "Streets",
+        "Accessibility",
+        "Green space"
+      ],
+      "notes": [
+        "This is an illustrative upcoming session for the Field Notes prototype.",
+        "Meet at the Soldiers’ and Sailors’ Arch at 10:00 a.m. The planned route follows Flatbush Avenue toward Atlantic Avenue.",
+        "Look for moments of welcome: a place to sit, a safe crossing, a tree that offers shade. Add your observations to the conversation before or after the walk."
+      ],
+      "poll": "What would make your everyday walk better?",
+      "options": [
+        "More shade and places to sit",
+        "Safer, slower crossings",
+        "More room for people"
+      ],
+      "sample": true
+    },
+    {
+      "id": "s1",
+      "code": "ATL24",
+      "title": "Atlantic Avenue Corridor Walk",
+      "date": "2026-10-18",
+      "endDate": "2026-10-18",
+      "place": "Barclays Plaza → Nostrand Ave",
+      "neighborhood": "Prospect Heights",
+      "desc": "A walking session along the Atlantic Avenue corridor. Where do you feel safe crossing? What would make this street feel like a neighborhood again?",
+      "art": "crossing",
+      "tags": [
+        "Streets",
+        "Safety",
+        "Transit"
+      ],
+      "notes": [
+        "A walking conversation along Atlantic Avenue, from Barclays Plaza toward Nostrand Avenue.",
+        "Participants raised short pedestrian signals, limited shade at bus stops, and the loss of small neighborhood businesses. These are observations from the supplied reference, not a formal survey.",
+        "The conversation stays open. Revisit a corner, share a photograph, or tell us what has changed since the walk."
+      ],
+      "poll": "Which change should come first on Atlantic Avenue?",
+      "options": [
+        "Safer pedestrian crossings",
+        "Shade and bus shelters",
+        "Support for local shops"
+      ],
+      "sample": true
+    },
+    {
+      "id": "s2",
+      "code": "GOW09",
+      "title": "Gowanus Waterfront Futures",
+      "date": "2026-09-27",
+      "endDate": "2026-09-27",
+      "place": "Gowanus Dredgers Boathouse",
+      "neighborhood": "Gowanus",
+      "desc": "Imagining public access to the canal edge as rezoning unfolds — flooding, open space, and who the waterfront is for.",
+      "art": "waterfront",
+      "tags": [
+        "Flooding",
+        "Housing",
+        "Green space"
+      ],
+      "notes": [
+        "A conversation about public access and daily life along the Gowanus Canal.",
+        "Contributors described recurring street flooding, housing pressures, and the need for a continuous public esplanade.",
+        "Ideas included stormwater planting, truly public gathering spaces, and affordable homes for existing neighbors. Add updates and local knowledge below."
+      ],
+      "poll": "What should a public waterfront prioritize?",
+      "options": [
+        "Flood resilience",
+        "Continuous public access",
+        "Affordable homes nearby"
+      ],
+      "sample": true
+    },
+    {
+      "id": "s3",
+      "code": "BED31",
+      "title": "Bed-Stuy Open Streets Forum",
+      "date": "2026-08-30",
+      "endDate": "2026-08-30",
+      "place": "Restoration Plaza",
+      "neighborhood": "Bedford-Stuyvesant",
+      "desc": "Reviewing a summer of open streets on Tompkins Avenue: what worked, what didn’t, and what should become permanent.",
+      "art": "chairs",
+      "tags": [
+        "Streets",
+        "Small business",
+        "Noise"
+      ],
+      "notes": [
+        "Neighbors reflected on a summer of open streets on Tompkins Avenue.",
+        "Children playing outside and informal gatherings were valued. Delivery access and late-night noise need continued attention.",
+        "This archive remains a place to compare experiences across seasons and build on the conversation."
+      ],
+      "poll": "How should open streets evolve?",
+      "options": [
+        "Every weekend, year-round",
+        "More seasonal programming",
+        "Better delivery and access plans"
+      ],
+      "sample": true
+    }
+  ],
+  "entries": [
+    {
+      "id": "e1",
+      "sessionId": "s1",
+      "type": "text",
+      "name": "Marisol R.",
+      "hood": "Prospect Heights",
+      "text": "Crossing Atlantic at Vanderbilt with a stroller is terrifying. The signal is too short and trucks turn fast. We need longer pedestrian phases and a real median refuge.",
+      "tags": [
+        "Safety",
+        "Streets"
+      ],
+      "created": "2026-10-18T16:00:00Z"
+    },
+    {
+      "id": "e2",
+      "sessionId": "s1",
+      "type": "voice",
+      "name": "Devon",
+      "hood": "Clinton Hill",
+      "text": "Bus stops have no shelter and no shade — waiting in summer heat is brutal for seniors.",
+      "tags": [
+        "Transit",
+        "Heat",
+        "Accessibility"
+      ],
+      "created": "2026-10-18T16:30:00Z"
+    },
+    {
+      "id": "e3",
+      "sessionId": "s1",
+      "type": "photo",
+      "name": "Aisha K.",
+      "hood": "Crown Heights",
+      "text": "This corner used to have a bodega and a bench. Now it’s a blank wall and a parking lot.",
+      "location": "Atlantic Ave & Franklin Ave",
+      "art": "crossing",
+      "tags": [
+        "Small business",
+        "Streets"
+      ],
+      "created": "2026-10-18T17:00:00Z"
+    },
+    {
+      "id": "e4",
+      "sessionId": "s1",
+      "type": "text",
+      "name": "Anonymous neighbor",
+      "hood": "Bedford-Stuyvesant",
+      "text": "The street is built for cars passing through, not for people living here. Narrower lanes, more trees, safe crossings — that’s the whole ask.",
+      "tags": [
+        "Streets",
+        "Safety",
+        "Green space"
+      ],
+      "created": "2026-10-19T12:00:00Z"
+    },
+    {
+      "id": "e5",
+      "sessionId": "s1",
+      "type": "text",
+      "name": "Tom W.",
+      "hood": "Fort Greene",
+      "text": "Night lighting under the LIRR overpass is basically nonexistent. Feels unsafe walking home.",
+      "tags": [
+        "Safety"
+      ],
+      "created": "2026-10-19T13:00:00Z"
+    },
+    {
+      "id": "e6",
+      "sessionId": "s1",
+      "type": "voice",
+      "name": "Grace",
+      "hood": "Crown Heights",
+      "text": "Rents rising along the corridor are pushing out the small shops we rely on.",
+      "tags": [
+        "Housing",
+        "Small business"
+      ],
+      "created": "2026-10-19T14:00:00Z"
+    },
+    {
+      "id": "e7",
+      "sessionId": "s2",
+      "type": "photo",
+      "name": "Luis M.",
+      "hood": "Gowanus",
+      "text": "Street flooded again after a 40-minute rain. Basement apartments on this block take water every time.",
+      "location": "Bond St & 3rd St",
+      "art": "waterfront",
+      "tags": [
+        "Flooding",
+        "Housing"
+      ],
+      "created": "2026-09-27T15:00:00Z"
+    },
+    {
+      "id": "e8",
+      "sessionId": "s2",
+      "type": "text",
+      "name": "Anonymous neighbor",
+      "hood": "Carroll Gardens",
+      "text": "A continuous public esplanade along the canal — not private plazas that close at dusk. Green space that also absorbs stormwater.",
+      "tags": [
+        "Green space",
+        "Flooding"
+      ],
+      "created": "2026-09-27T16:00:00Z"
+    },
+    {
+      "id": "e9",
+      "sessionId": "s2",
+      "type": "voice",
+      "name": "Priya",
+      "hood": "Park Slope",
+      "text": "Affordable units in new towers must actually go to people already here.",
+      "tags": [
+        "Housing"
+      ],
+      "created": "2026-09-27T17:00:00Z"
+    },
+    {
+      "id": "e10",
+      "sessionId": "s2",
+      "type": "text",
+      "name": "Ken O.",
+      "hood": "Gowanus",
+      "text": "Sewer overflow smell in summer is real. Flooding and heat make the canal edge unusable half the year.",
+      "tags": [
+        "Flooding",
+        "Heat"
+      ],
+      "created": "2026-09-28T14:00:00Z"
+    },
+    {
+      "id": "e11",
+      "sessionId": "s3",
+      "type": "text",
+      "name": "Rochelle",
+      "hood": "Bedford-Stuyvesant",
+      "text": "Kids playing in the street on Saturdays was the best thing all summer. Make Tompkins open streets permanent on weekends.",
+      "tags": [
+        "Streets",
+        "Green space"
+      ],
+      "created": "2026-08-30T14:00:00Z"
+    },
+    {
+      "id": "e12",
+      "sessionId": "s3",
+      "type": "photo",
+      "name": "Andre",
+      "hood": "Bedford-Stuyvesant",
+      "text": "Our block party chairs, every Sunday. This is what public space looks like.",
+      "location": "Tompkins Ave & Hancock St",
+      "art": "chairs",
+      "tags": [
+        "Streets",
+        "Small business"
+      ],
+      "created": "2026-08-30T15:00:00Z"
+    },
+    {
+      "id": "e13",
+      "sessionId": "s3",
+      "type": "voice",
+      "name": "Mr. Hill",
+      "hood": "Stuyvesant Heights",
+      "text": "Deliveries and noise late at night when barriers come down — needs management.",
+      "tags": [
+        "Noise",
+        "Streets"
+      ],
+      "created": "2026-08-30T16:00:00Z"
+    }
+  ],
+  "journal": [
+    {
+      "id": "city-at-eye-level",
+      "number": "01",
+      "category": "Street life",
+      "title": "The city at eye level.",
+      "excerpt": "Beyond the skyline, a city is made of small encounters. On Atlantic Avenue, we’re learning to look a little closer.",
+      "date": "2026-10-28",
+      "readTime": "5 min read",
+      "art": "blocks",
+      "author": "The Urbanism Committee",
+      "sessionCode": "ATL24",
+      "body": [
+        "A city is often introduced by its skyline. We recognize the outline before we know a single street. But the city we actually live in is closer to the ground: the distance between a curb and a bus door, the shade that reaches a bench, the few seconds we have to cross.",
+        "Walking Atlantic Avenue asks us to pay attention to that smaller scale. A broad roadway can connect neighborhoods on a map while making everyday journeys feel uncertain. The measure of a street is also how comfortably a child, a senior, or a person carrying groceries can move through it.",
+        "The observations gathered in our corridor walk return to ordinary things. A longer crossing signal. A place to wait out of the sun. A shopfront that gives something back to the sidewalk. These are modest changes, but they shape whether a place invites us to stay.",
+        "There is value in looking together. The same corner can be a shortcut for one neighbor, a barrier for another, and a place of memory for someone else. A field note does not have to settle the difference. It can hold those experiences beside one another.",
+        "This journal begins with that practice: take a walk, notice something, and leave room for another perspective. The city at eye level is always a work in progress."
+      ]
+    },
+    {
+      "id": "waterfront-for-whom",
+      "number": "02",
+      "category": "Climate & place",
+      "title": "A waterfront for whom?",
+      "excerpt": "At the edge of Gowanus, public access and climate resilience are part of the same conversation.",
+      "date": "2026-10-12",
+      "readTime": "4 min read",
+      "art": "waterfront",
+      "author": "The Urbanism Committee",
+      "sessionCode": "GOW09",
+      "body": [
+        "Water gives a neighborhood an edge, but it should not draw a boundary around who belongs. Along the Gowanus Canal, questions of access are closely tied to questions of housing, climate, and care.",
+        "A waterfront path means little if it is hard to reach, closes without notice, or has nowhere to sit. A resilient landscape needs to work on an ordinary afternoon as well as during a storm.",
+        "The reference conversation asks for continuous public space and planting that can absorb rain. Neighbors also describe the very immediate cost of flooding: damaged homes, interrupted journeys, and the uncertainty of the next heavy rain.",
+        "Thinking about these issues together changes the brief. We can ask not only what a new waterfront looks like, but how it supports the people who already make a life nearby.",
+        "The archive remains open for observations. A photograph after a rainstorm, an accessible route, or a memory of a favorite spot can help make the conversation more specific."
+      ]
+    },
+    {
+      "id": "room-for-everyone",
+      "number": "03",
+      "category": "Community",
+      "title": "Room for everyone.",
+      "excerpt": "A folding chair, an open street, and the quiet architecture of belonging.",
+      "date": "2026-09-16",
+      "readTime": "3 min read",
+      "art": "chairs",
+      "author": "The Urbanism Committee",
+      "sessionCode": "BED31",
+      "body": [
+        "Sometimes the most useful piece of urban infrastructure is a folding chair. It is inexpensive, movable, and immediately understood. Put a few outside, and a stretch of pavement becomes a place to meet.",
+        "On an open street, the everyday can become visible. Children find room to play. A shopkeeper talks with a neighbor. Someone stays for another hour because there is a comfortable place to sit.",
+        "These moments do not remove the practical questions. Deliveries still need access. Noise needs care. People with different schedules and mobility needs must be able to use the street.",
+        "An open street is a shared arrangement that needs attention over time. Listening to what works, and what does not, is part of its design. The conversation at Restoration Plaza is one starting point; the archive is where it can continue."
+      ]
+    },
+    {
+      "id": "staying-in-place",
+      "number": "04",
+      "category": "Housing",
+      "title": "The right to stay.",
+      "excerpt": "What neighborhood change means for the people and small businesses already here.",
+      "date": "2026-09-04",
+      "readTime": "4 min read",
+      "art": "homes",
+      "author": "The Urbanism Committee",
+      "body": [
+        "A neighborhood is more than a collection of buildings. It is also a network of relationships: the person who knows your order, the neighbor who checks in, the shop that has been there through every season.",
+        "When we talk about change, these relationships deserve a place in the discussion. Better streets and new public spaces should strengthen the lives of existing residents, including renters and small business owners.",
+        "The question is not answered by one design. It calls for a sustained conversation about housing access, daily costs, and who can remain as an area becomes more desirable.",
+        "A useful field note can make an abstract issue concrete. Record the service a local shop provides, the journey a neighbor depends on, or the kind of home a family needs. Those everyday details are part of the urban record."
+      ]
+    }
+  ]
+}
