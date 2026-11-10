@@ -20,6 +20,7 @@ Production target: https://aiabrooklynurbanism.com
 ```
 prototype/index.html      reference UI (immutable)
 frontend/                 Vite shell + sync adapter (TypeScript)
+frontend/public/media/    ALL static media (sessions/<CODE>, journal/<id>, gallery/) → /media/<path>
 backend/                  Go API (chi, pgx, Postgres)
 specs/001-field-notes-platform/{spec,plan,tasks}.md
 .specify/                 spec-kit memory/templates/scripts
