@@ -57,7 +57,9 @@ end of every working session.
 
 ## Development Workflow
 
-- Branch per feature from `main`; PR with spec reference.
+- Single-user workflow: work, commit, and push directly on `main` by default.
+  Separate feature branches and pull requests are not required; create them
+  only when the owner explicitly requests them. Retain spec references for features.
 - `go build ./... && go vet ./... && go test ./...` and `npm run build` MUST pass before push.
 - Schema changes are new numbered files in `backend/internal/repository/postgres/migrations/`.
 - Never commit `.env`; `.env.example` is the contract.
@@ -68,4 +70,4 @@ This constitution supersedes ad-hoc practice. Amendments require a short
 rationale appended to `handoff.md` and a version bump below. Reviews check
 layering (II), prototype parity (I), and the append-only rule (IV) first.
 
-**Version**: 1.0.0 | **Ratified**: 2026-11-11 | **Last Amended**: 2026-11-11
+**Version**: 1.1.0 | **Ratified**: 2026-11-11 | **Last Amended**: 2026-11-17

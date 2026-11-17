@@ -16,6 +16,8 @@ implementation.
   the constitution's anonymous-by-default and minimal-data requirements.
 - Follow the spec-driven workflow and the development and verification rules
   in the constitution, including required checks before pushing.
+- Work directly on `main` for this single-user project; separate branches and
+  pull requests are required only when explicitly requested by the owner.
 - Whenever creating or changing something, append a concise checkpoint to
   `handoff.md` at a natural stopping point, and always do so before ending the
   working session. Record what changed, what was verified, what remains, and

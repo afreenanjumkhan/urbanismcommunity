@@ -15,6 +15,7 @@ Production target: https://aiabrooklynurbanism.com
 3. Frontend and backend are separate deployables (Vercel / Railway). Talk only via `/api/v1`.
 4. Append-only record; seed rows carry `sample: true`.
 5. Log a checkpoint in `handoff.md` at the end of every session.
+6. Single-user workflow: commit and push directly to `main`; use separate branches or PRs only when the owner explicitly requests them.
 
 ## Layout
 ```

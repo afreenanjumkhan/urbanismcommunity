@@ -79,3 +79,18 @@ what changed, what was verified, what is next, anything surprising.
 **Next**
 - Push this checkpoint and branch to the requested repository; address dependency findings separately.
 - The stale contact note from Session 2 remains open.
+
+## 2026-11-17 · Main workflow and constitution 1.1.0
+
+**Done**
+- Merged contact-page-links into the latest starman011/urbanism main, preserving existing main changes and commit authorship.
+- Amended constitution to v1.1.0: direct work on main is the default; branches and PRs only on explicit owner request. Rationale: the owner is the sole active user and requested removal of unnecessary branch overhead.
+- Aligned AGENTS.md and CLAUDE.md with this workflow. Previous branch push succeeded at 0284027.
+
+**Verified**
+- Merged code passed frontend build and prototype parity, plus backend build, vet, and tests.
+- New commits use afreenanjumkhan's configured identity; historical authorship is preserved.
+
+**Next**
+- Push this verified main checkpoint to starman011/urbanism. Contributor display may take time to refresh.
+- Existing dependency findings and stale contact note remain follow-ups.
