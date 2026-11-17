@@ -1,0 +1,22 @@
+# Agent instructions
+
+At the start of each working session, read `CLAUDE.md`, `handoff.md`, and
+`.specify/memory/constitution.md`. Follow the constitution; it supersedes
+ad-hoc practice. Consult the relevant feature spec, plan, and tasks before
+implementation.
+
+- Treat `prototype/index.html` as the visual and interaction contract. Do not
+  edit `frontend/public/legacy/app.js` or `app.css`; integration belongs around
+  the bundle. A visual change requires a new prototype first.
+- Preserve backend layering: controller → service → repository, with domain as
+  the shared contract. Keep SQL in repositories and business rules in services.
+- Keep frontend and backend separately deployable and communicate through the
+  versioned JSON API. Preserve local-only behavior when the API is unavailable.
+- Preserve the append-only record, mark seed content `sample: true`, and follow
+  the constitution's anonymous-by-default and minimal-data requirements.
+- Follow the spec-driven workflow and the development and verification rules
+  in the constitution, including required checks before pushing.
+- Whenever creating or changing something, append a concise checkpoint to
+  `handoff.md` at a natural stopping point, and always do so before ending the
+  working session. Record what changed, what was verified, what remains, and
+  any surprises. Preserve prior entries.
