@@ -10,3 +10,8 @@ Verified email/password users receive short-lived JWTs. Only board members and t
 may create sessions. akhannyc72@gmail.com is the designated super admin, activated by a private
 deployment setup token. Only the super admin may invite/revoke board members. Google is backlog.
 Document architecture with SVG UML diagrams and record verification limits honestly.
+
+## Brand refinement — 2026-11-17
+Recreate the owner's supplied B/slash + AIA circle + Brooklyn mark as SVG in the
+top-left header. Replace miniature full-folder navigation with only the raised
+top label/notch shape. Keep page labels, active state and accessible hit targets.

@@ -127,3 +127,18 @@ what changed, what was verified, what is next, anything surprising.
 - Configure AUTH_JWT_SECRET and AUTH_BOOTSTRAP_TOKEN privately on Railway, run the migration in staging, activate akhannyc72@gmail.com, then remove the bootstrap token. No production secrets or credentials were created.
 - No local PostgreSQL/Docker: real-database lifecycle verification remains a staging step. Full screen-reader/legal review and throttled-network media checks remain; no compliance certification is claimed.
 - See backlog.md for Google sign-in, recovery, dependency audit and organizational review follow-ups. A GitHub push does not verify a production deployment.
+
+## 2026-11-17 · Vector brand and folder-notch checkpoint
+
+**Done**
+- Recreated the supplied logo as SVG (white B/slashes, black AIA circle and Brooklyn lettering on Signal Red), stored in frontend/public/media/brand/aia-brooklyn.svg and embedded into the canonical prototype.
+- Simplified header page navigation to only the raised label/notch silhouette; removed the separate miniature-folder body/index decorations. Retained labels, active state, focus rings, and mobile disclosure behavior.
+- Regenerated legacy assets and versioned URLs. Updated spec 002 refinement notes.
+
+**Verified**
+- Frontend build and prototype parity pass. Browser review at 1440px and 320px confirms loaded SVG, correct tab appearance and no horizontal overflow; mobile menu Escape behavior retained.
+- Header screenshot saved in docs/brand-header-preview.jpg.
+- Required backend build, vet and tests also pass; SVG parses successfully as XML.
+
+**Next**
+- Publish to requested GitHub main while preserving the externally rewritten local history (previous source publication: faf83df). Existing auth configuration and staging checks remain as documented above.

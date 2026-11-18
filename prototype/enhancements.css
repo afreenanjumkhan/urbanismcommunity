@@ -76,3 +76,24 @@ img.fn-failed{background:#e3d8c4;min-height:120px;border:1px dashed var(--muted)
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media(forced-colors:active){button,a,input,textarea{forced-color-adjust:auto}.fn-menu,.fn-panel{border:2px solid ButtonText}}
+
+/* Brand revision: a vector lockup and only the top label tabs of the folders. */
+.chapter-vector-logo{display:block;width:252px;height:auto;aspect-ratio:1305/256;min-height:0!important}
+.site-header .main-nav{align-items:flex-end!important;height:100%;padding-bottom:0}
+.site-header .main-nav>a[data-folder-tab],.site-header .main-nav>a[data-folder-tab]:hover,.site-header .main-nav>a[data-folder-tab].active{
+ --notch-fill:#e3d8c4;position:relative;isolation:isolate;height:44px!important;min-height:44px!important;
+ padding:13px 12px 9px!important;border:0!important;border-radius:0!important;background:transparent!important;
+ box-shadow:none!important;transform:none!important;color:var(--ink)!important;justify-content:center;gap:4px;
+}
+.site-header .main-nav>a[data-folder-tab]:before{
+ content:""!important;display:block!important;position:absolute;inset:0!important;width:100%!important;height:100%!important;
+ border:0!important;border-radius:0!important;background:var(--notch-fill)!important;transform:none!important;z-index:-1;
+ clip-path:polygon(0 100%,7% 25%,10% 8%,15% 0,82% 0,88% 8%,92% 25%,100% 100%);
+}
+.site-header .main-nav>a[data-folder-tab]:after{display:none!important}
+.site-header .main-nav>a[data-folder-tab].active{--notch-fill:var(--red);color:#fff!important}
+.site-header .main-nav>a[data-folder-tab]:hover:not(.active){--notch-fill:#d4c4aa}
+.site-header .main-nav .folder-index{display:none!important}
+.site-header .main-nav>a[data-folder-tab] .folder-label{color:inherit;position:relative}
+@media(max-width:900px){.chapter-vector-logo{width:230px}.site-header .main-nav.fn-open{gap:10px!important}.site-header .main-nav>a[data-folder-tab]{height:48px!important;min-height:48px!important}}
+@media(forced-colors:active){.site-header .main-nav>a[data-folder-tab]{border:1px solid ButtonText!important}.site-header .main-nav>a.active{outline:2px solid Highlight!important}}

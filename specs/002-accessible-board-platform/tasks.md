@@ -6,3 +6,4 @@
 - [x] Security tests and responsive/browser review (limits in docs/verification.md)
 - [x] README, SVG UML, deployment guidance, Google backlog
 - [x] Final checks and handoff
+- [x] Vector logo and notch-only page tabs; desktop/mobile review and checkpoint

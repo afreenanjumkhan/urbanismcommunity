@@ -4,6 +4,14 @@ const root=new URL('../../',import.meta.url);
 const read=p=>readFileSync(new URL(p,root),'utf8');
 const write=(p,s)=>writeFileSync(new URL(p,root),s);
 let html=read('prototype/index.html');
+// Embed the vector mark so the canonical prototype stays self-contained.
+const logo=read('frontend/public/media/brand/aia-brooklyn.svg');
+const logoURI='data:image/svg+xml;base64,'+Buffer.from(logo).toString('base64');
+const oldLockup='(0,b.jsxs)("span",{className:"chapter-lockup",children:[(0,b.jsx)("span",{className:"chapter-monogram","aria-hidden":"true",children:"BK"}),(0,b.jsx)("span",{className:"chapter-seal",children:"AIA"}),(0,b.jsx)("span",{className:"chapter-name",children:"Brooklyn"})]})';
+const newLockup=`(0,b.jsx)("img",{className:"chapter-vector-logo",src:${JSON.stringify(logoURI)},alt:"AIA Brooklyn",width:1305,height:256})`;
+if(html.includes(oldLockup))html=html.replace(oldLockup,newLockup);
+else if(html.includes('className:"chapter-vector-logo"'))html=html.replace(/\(0,b\.jsx\)\("img",\{className:"chapter-vector-logo",src:"[^"]+",alt:"AIA Brooklyn",width:1305,height:256\}\)/,newLockup);
+else throw new Error('Cannot find canonical header logo; review prototype integration.');
 const css=read('prototype/enhancements.css'),js=read('prototype/enhancements.js');
 html=html.replace(/\/\* BEGIN ACCESSIBLE REVISION \*\/[\s\S]*?\/\* END ACCESSIBLE REVISION \*\//g,'');
 html=html.replace('</style>',`/* BEGIN ACCESSIBLE REVISION */\n${css}\n/* END ACCESSIBLE REVISION */</style>`);
