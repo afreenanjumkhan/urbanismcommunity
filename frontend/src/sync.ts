@@ -10,6 +10,8 @@ const POLL_MS = 45_000;
 
 let last: ClientDoc | null = null;
 let queue: Promise<void> = Promise.resolve();
+const syncedSessions=new Set<string>();
+export function markSessionSynced(id:string){syncedSessions.add(id)}
 
 function readLocal(): ClientDoc | null {
   try {
@@ -53,7 +55,10 @@ function diffAndPush(prev: ClientDoc | null, next: ClientDoc) {
     const have = ids(a);
     return (b ?? []).filter((x) => !have.has(x.id));
   };
-  for (const s of newOf(prev?.sessions, next.sessions)) enqueue(() => api.createSession(s));
+  // Sessions are explicitly persisted by the authenticated UI before local commit.
+  for (const s of newOf(prev?.sessions, next.sessions)) {
+    if (!syncedSessions.delete(s.id)) console.warn('[sync] Ignoring unconfirmed local session.');
+  }
   for (const e of newOf(prev?.entries, next.entries)) enqueue(() => api.createEntry(e));
   for (const r of newOf(prev?.replies, next.replies)) enqueue(() => api.createReply(r));
   for (const m of newOf(prev?.materials, next.materials)) enqueue(() => api.createMaterial(m));

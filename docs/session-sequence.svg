@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="690" viewBox="0 0 1100 690" role="img" aria-labelledby="t d">
+<title id="t">UML authenticated session creation sequence</title><desc id="d">Login yields a short-lived JWT. The API validates token and active role before inserting a session; the browser commits locally only after success.</desc>
+<defs><marker id="a" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#151515"/></marker></defs>
+<rect width="1100" height="690" fill="#F1EDE5"/><g font-family="Arial,sans-serif" fill="#151515"><text x="35" y="45" font-size="27" font-weight="bold">Board session creation / UML sequence</text>
+<g fill="#fff" stroke="#151515"><rect x="30" y="85" width="160" height="55"/><rect x="250" y="85" width="180" height="55"/><rect x="500" y="85" width="180" height="55"/><rect x="755" y="85" width="290" height="55"/></g>
+<g font-size="17" text-anchor="middle"><text x="110" y="118">Board user</text><text x="340" y="118">Browser UI</text><text x="590" y="118">API / services</text><text x="900" y="118">Accounts / session repository</text></g>
+<g stroke="#77736F" stroke-dasharray="6 5"><path d="M110 140V640"/><path d="M340 140V640"/><path d="M590 140V640"/><path d="M900 140V640"/></g>
+<g fill="none" stroke="#151515" stroke-width="2" marker-end="url(#a)"><path d="M110 190H340"/><path d="M340 235H590"/><path d="M590 280H900"/><path d="M340 390H590"/><path d="M590 445H900"/><path d="M590 510H900"/></g>
+<g font-size="15"><text x="125" y="180">Enter credentials</text><text x="365" y="223">POST /auth/login</text><text x="630" y="268">Load account; verify password</text><text x="365" y="378">POST /sessions + JWT</text><text x="622" y="430">Verify token; check active role</text><text x="635" y="497">[authorized] validate and insert</text></g>
+<g fill="none" stroke="#151515" stroke-dasharray="6 4" marker-end="url(#a)"><path d="M900 310H590"/><path d="M590 345H340"/><path d="M900 550H590"/><path d="M590 590H340"/></g>
+<g font-size="15"><text x="670" y="301">Active account</text><text x="355" y="336">JWT: 1 hour / memory only</text><text x="695" y="540">Created session</text><text x="370" y="580">201 Created</text><text x="265" y="630" fill="#B12F30">Commit local view after success</text></g>
+<rect x="35" y="652" width="1010" height="26" fill="#ead3cd"/><text x="50" y="671" font-size="14">Alternative: invalid/expired JWT → 401; unauthorized role → 403; no local session is committed.</text></g></svg>

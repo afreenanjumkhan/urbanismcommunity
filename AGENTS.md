@@ -6,8 +6,8 @@ ad-hoc practice. Consult the relevant feature spec, plan, and tasks before
 implementation.
 
 - Treat `prototype/index.html` as the visual and interaction contract. Do not
-  edit `frontend/public/legacy/app.js` or `app.css`; integration belongs around
-  the bundle. A visual change requires a new prototype first.
+  directly edit `frontend/public/legacy/app.js` or `app.css`; revise the prototype
+  first and regenerate with `frontend/scripts/sync-prototype.mjs`, then verify parity.
 - Preserve backend layering: controller → service → repository, with domain as
   the shared contract. Keep SQL in repositories and business rules in services.
 - Keep frontend and backend separately deployable and communicate through the

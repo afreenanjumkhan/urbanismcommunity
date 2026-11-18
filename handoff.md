@@ -94,3 +94,36 @@ what changed, what was verified, what is next, anything surprising.
 **Next**
 - Push this verified main checkpoint to starman011/urbanism. Contributor display may take time to refresh.
 - Existing dependency findings and stale contact note remain follow-ups.
+
+## 2026-11-17 · Accessible board platform implementation checkpoint
+
+**Done**
+- Main push at 568532c succeeded. Started spec 002 on main.
+- Revised prototype with owner palette, mobile menu, focus/motion support, image states, consent and board dialogs; regenerated legacy assets with parity checks.
+- Added JWT/password services, invitation activation, super-admin board controls, account audit migration, and backend protection for session creation.
+- Amended constitution to 1.2.0: owner explicitly requested accounts and a new visual prototype; clarified regeneration and anonymous public access with optional persistence.
+- Google sign-in is high priority in backlog.md per owner clarification.
+
+**Verified so far**
+- Frontend build/parity and initial backend tests pass. Browser preview works outside the sandbox on 127.0.0.1:5174; mobile menu and create-session sign-in dialog inspected.
+
+**Next**
+- Complete security tests, accessibility fixes, README/SVG diagrams, and final validation. Configure private production auth secrets before live account activation.
+
+## 2026-11-17 · Accessible board platform final checkpoint
+
+**Done**
+- Completed spec 002 UI, consent, JWT accounts and board authorization. Preserved journal/folder design with the requested red/ink/paper palette; increased reading text and fixed 320/390px overflow.
+- Added README architecture/engineering/setup/privacy documentation, two SVG UML diagrams, browser screenshots, and explicit verification limits. Google sign-in remains high-priority backlog.
+- Versioned legacy asset URLs and removed year-long immutable caching for fixed filenames so returning visitors receive revised assets.
+- Local history was externally rewritten (reflog: "rewrite authorship", base d28a522); requested GitHub main remains 568532c. Their starting trees are identical. Preserve local history and publish the new snapshot as a normal child of GitHub main, without force-pushing.
+
+**Verified**
+- Frontend build, TypeScript and exact prototype parity pass; consent behavior test passes.
+- Backend build, vet and tests pass, including new token expiry/tampering/revocation, role, bootstrap and anonymous-session-denial tests.
+- Browser review at 1440, 390 and 320px; menu opening/Escape/focus, session sign-in gate, dialog focus return, consent reopening and necessary-only selection checked. No journal images missing alt or buttons missing accessible names in DOM inspection. Screenshots in docs/.
+
+**Next / limits**
+- Configure AUTH_JWT_SECRET and AUTH_BOOTSTRAP_TOKEN privately on Railway, run the migration in staging, activate akhannyc72@gmail.com, then remove the bootstrap token. No production secrets or credentials were created.
+- No local PostgreSQL/Docker: real-database lifecycle verification remains a staging step. Full screen-reader/legal review and throttled-network media checks remain; no compliance certification is claimed.
+- See backlog.md for Google sign-in, recovery, dependency audit and organizational review follow-ups. A GitHub push does not verify a production deployment.

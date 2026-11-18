@@ -97,7 +97,7 @@ func CORS(origins []string) func(http.Handler) http.Handler {
 	return cors.Handler(cors.Options{
 		AllowedOrigins:   origins,
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-		AllowedHeaders:   []string{"Accept", "Content-Type", ClientHeader, "X-Request-Id"},
+		AllowedHeaders:   []string{"Accept", "Content-Type", "Authorization", ClientHeader, "X-Request-Id"},
 		ExposedHeaders:   []string{"X-Request-Id"},
 		AllowCredentials: false,
 		MaxAge:           300,

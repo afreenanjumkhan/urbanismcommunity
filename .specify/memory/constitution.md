@@ -10,8 +10,10 @@ community-driven placemaking and urban development.
 `prototype/index.html` is the visual and interaction contract. The shipped UI
 MUST be pixel- and behavior-identical to it. The bundle (`frontend/public/legacy/app.js`)
 and stylesheet (`frontend/public/legacy/app.css`) are served verbatim and MUST
-NOT be edited. Integration happens around the bundle (boot adapter, storage
-hooks), never inside it. Any visual change requires a new prototype first.
+NOT be edited directly. Owner-requested UI revisions change the canonical
+prototype first; regenerate served assets with `frontend/scripts/sync-prototype.mjs`
+and verify exact parity. Readable enhancement sources live in `prototype/`.
+Integration happens around the bundle (boot adapter, storage hooks).
 
 ### II. Three-Tier Backend, Strict Layering
 Go backend layers: `controller/http` (transport) → `service` (business rules)
@@ -37,9 +39,14 @@ slices (bookmarks, attending, notebook) remain on-device; shared slices
 persisted server-side.
 
 ### V. Anonymous by Default, Minimal Data
-No accounts in phase 1. An anonymous per-device client id scopes votes and
-appreciation. The API stores no emails, IPs beyond transient logs, or tracking
-identifiers. Every stored field maps to something the prototype shows.
+Public reading and contributions remain anonymous by default. Board accounts
+use email, salted password hashes, and short-lived JWTs; only admitted board
+members and the designated super admin can create sessions. The super admin
+controls board admission and revocation. Account actions have an audit trail.
+Optional device persistence requires explicit, reversible consent. No analytics
+or advertising trackers are introduced. Anonymous client ids scope votes and
+appreciation; without persistence consent they last only for the current visit.
+Store only data required for these functions; never log passwords or tokens.
 
 ### VI. Spec-Driven, Session-Logged
 Every feature starts in `specs/<n>-<slug>/spec.md`, then `plan.md`, then
@@ -70,4 +77,4 @@ This constitution supersedes ad-hoc practice. Amendments require a short
 rationale appended to `handoff.md` and a version bump below. Reviews check
 layering (II), prototype parity (I), and the append-only rule (IV) first.
 
-**Version**: 1.1.0 | **Ratified**: 2026-11-11 | **Last Amended**: 2026-11-17
+**Version**: 1.2.0 | **Ratified**: 2026-11-11 | **Last Amended**: 2026-11-17

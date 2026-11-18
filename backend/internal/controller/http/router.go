@@ -20,18 +20,23 @@ import (
 )
 
 type Controller struct {
-	svc *service.Services
-	log *slog.Logger
+	svc  *service.Services
+	log  *slog.Logger
+	auth *service.Auth
 }
 
-func NewRouter(svc *service.Services, log *slog.Logger, origins []string) http.Handler {
+func NewRouter(svc *service.Services, log *slog.Logger, origins []string, auth ...*service.Auth) http.Handler {
 	c := &Controller{svc: svc, log: log}
+	if len(auth) > 0 {
+		c.auth = auth[0]
+	}
 	r := chi.NewRouter()
 	r.Use(middleware.RequestID, middleware.Recover(log), middleware.Logger(log), middleware.CORS(origins), middleware.ClientID, middleware.BodyLimit(1<<20))
 
 	r.Get("/healthz", func(w http.ResponseWriter, _ *http.Request) { writeJSON(w, 200, map[string]string{"status": "ok"}) })
 
 	r.Route("/api/v1", func(r chi.Router) {
+		c.authRoutes(r)
 		r.Get("/state", c.getState)
 		r.Get("/journal", c.listJournal)
 		r.Get("/export", c.exportJSON)
@@ -64,6 +69,10 @@ func writeJSON(w http.ResponseWriter, status int, v any) {
 func (c *Controller) fail(w http.ResponseWriter, r *http.Request, err error) {
 	var ve *domain.ValidationError
 	switch {
+	case errors.Is(err, service.ErrUnauthorized):
+		writeJSON(w, 401, map[string]string{"error": "Sign in required or credentials invalid."})
+	case errors.Is(err, service.ErrForbidden):
+		writeJSON(w, 403, map[string]string{"error": "Board membership required for this action."})
 	case errors.As(err, &ve):
 		writeJSON(w, http.StatusBadRequest, map[string]string{"error": ve.Msg})
 	case errors.Is(err, domain.ErrNotFound):
@@ -124,6 +133,15 @@ func (c *Controller) getSession(w http.ResponseWriter, r *http.Request) {
 }
 
 func (c *Controller) createSession(w http.ResponseWriter, r *http.Request) {
+	u, err := c.identity(r)
+	if err != nil {
+		c.fail(w, r, err)
+		return
+	}
+	if !service.CanCreateSession(u) {
+		c.fail(w, r, service.ErrForbidden)
+		return
+	}
 	var in domain.Session
 	if err := decode(r, &in); err != nil {
 		c.fail(w, r, err)

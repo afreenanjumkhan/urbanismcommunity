@@ -44,9 +44,13 @@ func main() {
 	}
 
 	svc := service.New(db.Repositories(), time.Now)
+	auth := &service.Auth{Repo: db.Accounts(), Secret: os.Getenv("AUTH_JWT_SECRET"), Bootstrap: os.Getenv("AUTH_BOOTSTRAP_TOKEN"), Now: time.Now}
+	if !auth.Enabled() {
+		log.Warn("Board sign-in disabled: configure AUTH_JWT_SECRET (at least 32 characters)")
+	}
 	srv := &http.Server{
 		Addr:              ":" + cfg.Port,
-		Handler:           ctrl.NewRouter(svc, log, cfg.AllowedOrigins),
+		Handler:           ctrl.NewRouter(svc, log, cfg.AllowedOrigins, auth),
 		ReadHeaderTimeout: 10 * time.Second,
 		ReadTimeout:       30 * time.Second,
 		WriteTimeout:      30 * time.Second,

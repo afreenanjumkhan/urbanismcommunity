@@ -1,0 +1,20 @@
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+import ts from 'typescript';
+class Storage { data=new Map();getItem(k){return this.data.get(k)??null}setItem(k,v){this.data.set(k,String(v))}removeItem(k){this.data.delete(k)} }
+const localStorage=new Storage();let deletes=0;
+const ctx=vm.createContext({Storage,localStorage,indexedDB:{deleteDatabase(){deletes++;return {}}},console,Map,Set});
+const source=readFileSync(new URL('../src/privacy.ts',import.meta.url),'utf8').replace('export const privacy','const privacy')+'\nglobalThis.testPrivacy=privacy;';
+vm.runInContext(ts.transpile(source,{target:ts.ScriptTarget.ES2022}),ctx);
+localStorage.setItem('aia-field-notes-v1','visit-only');
+assert.equal(localStorage.data.has('aia-field-notes-v1'),false);
+assert.equal(localStorage.getItem('aia-field-notes-v1'),'visit-only');
+await ctx.testPrivacy.set(true);
+assert.equal(localStorage.data.get('aia-field-notes-v1'),'visit-only');
+await ctx.testPrivacy.set(false);
+assert.equal(localStorage.data.has('aia-field-notes-v1'),false);
+assert.equal(localStorage.data.get('aia-storage-choice-v1'),'necessary');
+assert.equal(deletes,1);
+assert.equal(localStorage.getItem('aia-field-notes-v1'),'visit-only');
+console.log('Consent defaults off; grant persists; withdrawal clears optional persistence and media.');

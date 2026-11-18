@@ -1,4 +1,5 @@
 import type { Entry, Material, Reply, ServerState, Session } from "./types";
+import { authorization } from './auth';
 
 const BASE = (import.meta.env.VITE_API_URL as string | undefined)?.replace(/\/$/, "") ?? "";
 const CLIENT_KEY = "aia-field-notes-client";
@@ -18,7 +19,7 @@ async function call<T>(method: string, path: string, body?: unknown, timeoutMs =
   try {
     const res = await fetch(`${BASE}/api/v1${path}`, {
       method,
-      headers: { "Content-Type": "application/json", "X-Client-Id": clientId() },
+      headers: { "Content-Type": "application/json", "X-Client-Id": clientId(), ...authorization() },
       body: body === undefined ? undefined : JSON.stringify(body),
       signal: ctl.signal,
     });

@@ -10,12 +10,13 @@ placemaking work. Owner: AIA Brooklyn Urbanism Committee.
 Production target: https://aiabrooklynurbanism.com
 
 ## Hard rules (see constitution)
-1. UI = `prototype/index.html`, served verbatim from `frontend/public/legacy/`. Never edit the bundle.
+1. UI = `prototype/index.html`, served verbatim from `frontend/public/legacy/`. Revise the prototype first; regenerate assets with `node frontend/scripts/sync-prototype.mjs`, never hand-edit the served bundle.
 2. Backend layering: controller → service → repository; `domain` shared; SQL only in repository.
 3. Frontend and backend are separate deployables (Vercel / Railway). Talk only via `/api/v1`.
 4. Append-only record; seed rows carry `sample: true`.
 5. Log a checkpoint in `handoff.md` at the end of every session.
 6. Single-user workflow: commit and push directly to `main`; use separate branches or PRs only when the owner explicitly requests them.
+7. Session creation requires board authorization. See spec 002 and README for JWT setup, super-admin activation, storage consent, and the Google sign-in backlog.
 
 ## Layout
 ```
