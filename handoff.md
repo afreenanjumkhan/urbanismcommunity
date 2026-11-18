@@ -157,3 +157,19 @@ what changed, what was verified, what is next, anything surprising.
 **Next**
 - Pre-existing, not caused by this change: at 390 px the journal's margin-note card and topic tabs overflow the right edge.
 - Not committed or pushed.
+
+## 2026-11-17 · Spec 003: home page and series navigation
+
+**Done**
+- New `#/home` route (default; logo target) via anchored, idempotent swaps in `sync-prototype.mjs`; the bundle mounts an empty `#fn-home` and passes live app state through a ref (`fnState`). `prototype/enhancements.js` renders it: interactive block map (pointer lift, idle wave, tap a block for a real field note, keyboard "Show another field note"), record counts with count-up, next/most recent session, numbered folder cards.
+- Nav order Home, About, Journal, Sessions, Archives, Records, Contact; each tab shows its series number 01–07 (the old archive-count superscript, which read "04", is gone).
+- Red series palette `--red-1`…`--red-7` (logo #B12F30 tints, ink contrast >= 4.5:1) on folder tabs (rise-in and hover growth), journal topic tabs (current = logo red) and home folders.
+- Spec, plan, tasks in `specs/003-home-and-series-navigation/`.
+
+**Verified**
+- `npm run build` (tsc, parity, Vite), privacy test; sync run twice applies each swap once; bundle parses.
+- Screenshots: home and journal at 1400 px, home at a true 390 px (iframe), reduced-motion home (static, counts 4/13/9/0).
+- Correction: the 390 px overflow noted in the typography checkpoint was a headless-Edge artifact (its window cannot go below ~500 px, so shots were cropped). Measured at a true 390 px, home and journal do not overflow.
+
+**Next**
+- Not committed or pushed. Hover/pointer motion verified by code review, not by an interactive browser session.

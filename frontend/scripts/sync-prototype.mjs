@@ -12,6 +12,18 @@ const newLockup=`(0,b.jsx)("img",{className:"chapter-vector-logo",src:${JSON.str
 if(html.includes(oldLockup))html=html.replace(oldLockup,newLockup);
 else if(html.includes('className:"chapter-vector-logo"'))html=html.replace(/\(0,b\.jsx\)\("img",\{className:"chapter-vector-logo",src:"[^"]+",alt:"AIA Brooklyn",width:1305,height:256\}\)/,newLockup);
 else throw new Error('Cannot find canonical header logo; review prototype integration.');
+// Spec 003: home route and series navigation. Each swap is idempotent and fails loudly
+// if a new prototype export no longer contains its anchor.
+const swap=(from,to,all=false)=>{if(html.includes(to))return;if(!html.includes(from))throw new Error('Spec 003 anchor missing: '+from.slice(0,80));html=all?html.replaceAll(from,to):html.replace(from,to)};
+swap('[["/journal","Journal"],["/sessions","Sessions"],["/archives","Archives"],["/about","About"],["/records","Records"],["/contact","Contact"]]','[["/home","Home"],["/about","About"],["/journal","Journal"],["/sessions","Sessions"],["/archives","Archives"],["/records","Records"],["/contact","Contact"]]');
+swap('r==="/archives"&&(0,b.jsx)("sup",{children:v.length.toString().padStart(2,"0")})','(0,b.jsx)("sup",{className:"folder-number","aria-hidden":"true",children:String(cA+1).padStart(2,"0")})');
+swap('location.hash.slice(1)||"/journal"','location.hash.slice(1)||"/home"',true);
+html=html.replace('f==="/home"&&(0,b.jsx)("div",{id:"fn-home",className:"container home-page"}),',''); // drop the first draft of the mount
+// The ref hands the live app state (A) to the enhancement layer; React renders no children here.
+swap('f==="/about"&&(0,b.jsx)(tv,{})','f==="/home"&&(0,b.jsx)("div",{id:"fn-home",className:"container home-page",ref:n=>{if(n)n.fnState=A}}),f==="/about"&&(0,b.jsx)(tv,{})');
+swap('!["/journal","/sessions","/archives","/about","/contact","/records"].includes(f)','!["/home","/journal","/sessions","/archives","/about","/contact","/records"].includes(f)');
+swap('{"/sessions":"Sessions",','{"/home":"Home","/sessions":"Sessions",');
+swap('className:"brand chapter-brand",href:"#/journal"','className:"brand chapter-brand",href:"#/home"');
 // Embed open-license web fonts from prototype/fonts/ so the prototype stays self-contained.
 const fontURI=f=>'data:font/woff2;base64,'+readFileSync(new URL('prototype/fonts/'+f,root)).toString('base64');
 const css=read('prototype/enhancements.css').replace(/url\("fonts\/([a-z0-9-]+\.woff2)"\)/g,(m,f)=>`url("${fontURI(f)}")`),js=read('prototype/enhancements.js');
