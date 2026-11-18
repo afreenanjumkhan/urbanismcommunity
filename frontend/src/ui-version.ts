@@ -1,2 +1,2 @@
 // Generated from the canonical prototype.
-export const UI_VERSION = '1f42ccc8f8877b69';
+export const UI_VERSION = '1686dc35230c57f7';

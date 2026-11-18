@@ -142,3 +142,18 @@ what changed, what was verified, what is next, anything surprising.
 
 **Next**
 - Publish to requested GitHub main while preserving the externally rewritten local history (previous source publication: faf83df). Existing auth configuration and staging checks remain as documented above.
+
+## 2026-11-17 · AIA typography revision
+
+**Done**
+- Owner asked for fonts similar to the official AIA sites. aiabrooklyn.org sets headings/nav/labels in Knockout (H&FJ) and text in Architype (MCKL, custom for AIA); both are licensed, so open-license stand-ins are used: Oswald for the Knockout role, Figtree for Architype (closest match in a side-by-side render).
+- `prototype/enhancements.css`: typography block — `--serif` now Oswald (all 54 heading/title rules), reading-text rules and former Lexend Deca accents on Figtree, serif-tuned negative tracking reset, nav/buttons/eyebrows/status on Oswald.
+- Fonts self-hosted (no Google request): `prototype/fonts/*.woff2` (latin, ~70 KB) + OFL licenses; `sync-prototype.mjs` embeds them as data URIs like the logo.
+
+**Verified**
+- `npm run build` (tsc, prototype parity, Vite) and privacy test pass. Headless-Edge screenshots of journal, contact, about, sessions (desktop) and journal (390 px) look right.
+- Node here is Adobe Photoshop's bundled v22 (copied to a scratch dir), not the constitution's Node 24.
+
+**Next**
+- Pre-existing, not caused by this change: at 390 px the journal's margin-note card and topic tabs overflow the right edge.
+- Not committed or pushed.

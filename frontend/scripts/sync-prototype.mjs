@@ -12,7 +12,9 @@ const newLockup=`(0,b.jsx)("img",{className:"chapter-vector-logo",src:${JSON.str
 if(html.includes(oldLockup))html=html.replace(oldLockup,newLockup);
 else if(html.includes('className:"chapter-vector-logo"'))html=html.replace(/\(0,b\.jsx\)\("img",\{className:"chapter-vector-logo",src:"[^"]+",alt:"AIA Brooklyn",width:1305,height:256\}\)/,newLockup);
 else throw new Error('Cannot find canonical header logo; review prototype integration.');
-const css=read('prototype/enhancements.css'),js=read('prototype/enhancements.js');
+// Embed open-license web fonts from prototype/fonts/ so the prototype stays self-contained.
+const fontURI=f=>'data:font/woff2;base64,'+readFileSync(new URL('prototype/fonts/'+f,root)).toString('base64');
+const css=read('prototype/enhancements.css').replace(/url\("fonts\/([a-z0-9-]+\.woff2)"\)/g,(m,f)=>`url("${fontURI(f)}")`),js=read('prototype/enhancements.js');
 html=html.replace(/\/\* BEGIN ACCESSIBLE REVISION \*\/[\s\S]*?\/\* END ACCESSIBLE REVISION \*\//g,'');
 html=html.replace('</style>',`/* BEGIN ACCESSIBLE REVISION */\n${css}\n/* END ACCESSIBLE REVISION */</style>`);
 html=html.replace('</script>',`/* BEGIN ACCESSIBLE REVISION */\n${js}\n/* END ACCESSIBLE REVISION */</script>`);
